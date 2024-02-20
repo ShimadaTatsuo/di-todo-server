@@ -13,9 +13,9 @@ export class UsersService {
     private dataSource: DataSource,
   ) {}
 
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto): Promise<User> {
     console.log(createUserDto);
-    return 'This action adds a new user';
+    return await this.userRepository.save(createUserDto);
   }
 
   async createMany(users: User[]) {
